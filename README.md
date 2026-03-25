@@ -1,290 +1,298 @@
-# Git & GitHub Notes
+# Git & GitHub
 
-## GitHub
-Website that allows developers to store and manage their code using Git. Stores in folders known as **repositories**.
+## 📌 What is GitHub?
+GitHub is a cloud-based platform where developers store and manage their code using Git.
 
-### GitHub Account
-- Create a new repository: `mohitrj-demo`
-- Make your first commit
-
----
-
-## Git
-A **Version Control System (VCS)** that helps track changes in code.
-
-### Features:
-- Popular  
-- Free & Open Source  
-- Fast & Scalable  
+### Why GitHub?
+- Backup your code online
+- Collaborate with others
+- Track project history
+- Work from anywhere
 
 ---
 
-## Setting up Git
+## 📌 What is Git?
+Git is a Version Control System (VCS).
 
-### Tools:
-- Visual Studio Code (VS Code)
-- Windows: Git Bash
+### Why Git?
+- Tracks changes in code
+- Helps revert mistakes
+- Enables teamwork without conflicts
+- Maintains history of project
 
-### Check installation:
+---
+
+## 📌 Key Concepts
+
+### 🔹 Repository (Repo)
+A folder where your project files and history are stored.
+
+### 🔹 Local vs Remote
+- Local → Your system
+- Remote → GitHub
+
+---
+
+## 📌 Setting Up Git
+
+### Install Git & Check:
 ```bash
 git --version
 ```
 
----
-
-## Configure Git
-
+### Configure Git:
 ```bash
-git config --global user.name "My Name"
-git config --global user.email "someone@email.com"
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
 git config --list
 ```
 
-**Note:**
-- Global → applies to entire system  
-- Local → applies to a specific repo  
-
-`~` refers to root directory.
+👉 This tells Git who is making changes (important for tracking).
 
 ---
 
-## Basic Commands
+## 📌 Basic Terminal Commands
 
 ```bash
-git --version   # Check version
-ls              # List files/folders
-clear           # Clear terminal
-pwd             # Current directory
-cd              # Change directory
-cd ..           # Go back
-mkdir folder    # Create folder
-git log         # Show commit history
-q               # Exit git log
+ls      # list files
+pwd     # current directory
+cd      # change directory
+cd..    # change to back directory
+mkdir directory_name  # create folder
+git log # log of all the commits
+clear   # clear terminal
+q       # when used 'git log' then to go back we can write "q"
 ```
 
----
-
-## Local vs Remote
-
-- **Local** → Your laptop/PC  
-- **Remote** → GitHub  
+👉 These help navigate your system.
 
 ---
 
-## Clone & Status
+## 📌 Git Workflow (Most Important)
 
-### Clone Repository:
+👉 FLOW:
+GitHub → Clone → Modify → Add → Commit → Push
+
+### Explanation:
+1. Clone → copy project locally
+2. Modify → make changes
+3. Add → stage changes
+4. Commit → save changes
+5. Push → upload to GitHub
+
+---
+
+## 📌 Clone Repository
+
 ```bash
-git clone <repository-link>
+git clone <repo_link>
 ```
 
-### Check Status:
+👉 Why?
+To bring existing project from GitHub to your system.
+
+---
+
+## 📌 Git Status
+
 ```bash
 git status
 ```
 
-### Steps:
-1. Copy GitHub repo link  
-2. Clone it using command git clone <repository-link>
-3. Navigate into folder (`cd`)  
-4. List files (`ls`)  
+👉 Why?
+To check current state of files.
 
 ---
 
-## View File
+## 📌 File States Explained
 
-- Normal files → `ls`
-- Hidden files → `ls -a`
+- Untracked → new files that git doesn't track yet
+- Modified → file changed
+- Staged → ready to commit
+- Unmodified → no changes / unchanged
 
----
-
-## Git Workflow
-
-Modify → Add → Commit
+👉 Understanding this is VERY IMPORTANT.
 
 ---
 
-## File Status Types
+## 📌 Add Command
 
-- **Untracked** → New file  
-- **Modified** → Changed  
-- **Staged** → Ready to commit  
-- **Unmodified** → No changes  
-
----
-
-## Add & Commit
-
-### Add files:
 ```bash
-git add <file_name>
-git add .
+git add file_name   # for single file
+git add .           # for multiple files
 ```
 
-### Commit changes:
+👉 Why?
+Moves files to staging area (preparing for commit).
+
+---
+
+## 📌 Commit Command
+
 ```bash
 git commit -m "message"
 ```
 
-**Note:** Only commits are recorded in Git.
+👉 Why?
+Creates a snapshot of your changes.
 
 ---
 
-## Push Command
-
-Upload local changes to GitHub:
+## 📌 Push Command
 
 ```bash
 git push origin main
 ```
 
-- `origin` → remote repo  
-- `main` → branch  
+👉 Why?
+Uploads your commits to GitHub.
 
 ---
 
-## Init Commands (Creating Repo Locally)
+## 📌 Init (Starting Project Locally)
 
 ```bash
 git init
-git remote add origin <link>
-git remote -v
-git branch
-git branch -M main
-git push origin main
 ```
+
+👉 Why?
+Converts a normal folder into Git repository.
 
 ---
 
-## Upstream Setup
+## 📌 Connect to GitHub
 
 ```bash
+git remote add origin <repo-link>
 git push -u origin main
 ```
 
-After this, you can simply use:
-```bash
-git push
-```
+👉 Why?
+Links your local repo with GitHub.
 
 ---
 
-## Workflow Summary
+## 📌 Branching (Very Important)
 
-GitHub → Clone → Change → Add → Commit → Push
+```bash
+git branch                      # current working branch
+git branch -M main              # rename branch
+git checkout -b new_branch      # create new branch
+git checkout branch_name        # to navigate
+git branch -d branch_name       # to delete branch (always checkout from the branch to delete it)
+```
+
+👉 Why?
+Work on features without affecting main code.
 
 ---
 
-## Git Branches
+## 📌 Merge
 
 ```bash
-git branch
-git branch -M main
-git checkout <branch_name>
-git checkout -b <new_branch>
-git branch -d <branch_name>
+way 1 :
+git diff branch_name    # compare commits, branches, files & more
+git merge branch_name   # merge 2 branches
+
+way 2 :
+Create PR
 ```
 
-### Push branch:
-```bash
-git push origin <branch_name>
-```
+👉 Why?
+Combine code from different branches.
 
 ---
 
-## Merging Code
+## 📌 Pull Request (PR)
 
-### Method 1:
-```bash
-git diff <branch_name>
-git merge <branch_name>
-```
+👉 Used on GitHub to merge changes.
 
-### Method 2:
-- Create Pull Request (PR)
-
----
-
-## Pull Request (PR)
-
-Used to propose changes.
-
-### Workflow:
+Flow:
 PR → Review → Merge
 
 ---
 
-## Pull Command
-
-Fetch and update local repo:
+## 📌 Pull Command
 
 ```bash
 git pull origin main
 ```
 
+👉 Why?
+Sync your local repo with GitHub.
+
 ---
 
-## Merge Conflicts
+## 📌 Merge Conflicts
 
-Occurs when Git cannot auto-merge changes.
+👉 Happens when same file edited in multiple branches.
 
-### Steps to resolve:
-1. Open file in VS Code  
-2. Remove conflict markers:
-   ```
-   <<<<<<< HEAD
-   =======
-   >>>>>>> main
-   ```
-3. Keep desired code  
-4. Save file  
+### Fix:
+- Edit file manually
+- Remove conflict markers
+- Commit again
 
-Then:
 ```bash
-git status
-git add .
-git commit -m "resolved conflict"
-git push
+- Remove the unwanted lines that VS Code has create i.e <<<<<HEAD, ====, >>>>MAIN
+- Now, keep the features you wanted and remove the unwanted features or, keep both the features
+- Save the file. Then check git status -> git add . -> git commit -m "msg" -> git status
+- Now, "nothing to commit" will appear. Check git diff main, so we have 1 extra change with comparison to 'main'
+- Go to main branch using git checkout main, and now git merge <-branch_name->
+- Now, the changes can automatically be merged.
+- Push the changes to the remote repo using git push.
 ```
 
 ---
 
-## Undoing Changes
+## 📌 Undo Changes
 
-### Case 1: Staged (not committed)
+### Reset staged:staged changes (which are added but not commited)
 ```bash
-git reset <file_name>
 git reset
 ```
 
-### Case 2: Last commit
+### Undo commit: commited changes (for one commit)
 ```bash
 git reset HEAD~1
 ```
-
-### Case 3: Multiple commits
+### Undo multi commit: commited changes (for many commits)
 ```bash
-git reset <commit_hash>
-git reset --hard <commit_hash>
+git reset commit_hash
+git reset --hard commit_hash
+```
+#### Hash is basically the 'code' for a perticular 'commit'. Which we can easily get using the 'git log' and we gets log of commit with their details
+
+---
+
+## 📌 Fork
+
+👉 Copy someone else's repo to your GitHub.
+
+### Why?
+To contribute to open source projects.
+
+```bash
+- search for the repository you wanted to fork
+- "fork" option is present on the right side of the GitHub, click that
+- gets option to rename the repository for your account.
+- save and get the repository in your account.
 ```
 
 ---
 
-## Fork
+## 📌 Summary (Must Remember)
 
-A fork is a copy of another repository.
-
-### Steps:
-1. Search repo on GitHub  
-2. Click **Fork**  
-3. Rename if needed  
-4. Repository appears in your account  
+- Git = Version Control
+- GitHub = Cloud storage for code
+- Commit = Save point
+- Push = Upload
+- Pull = Download updates
+- Branch = Work separately
 
 ---
 
-## Key Notes
+## 🎯 Final Tip
+Always follow:
+👉 Pull → Work → Add → Commit → Push
 
-- Git tracks commits, not adds  
-- Remote repo = GitHub  
-- Local repo = Your system  
-- Always pull before pushing in collaborative work  
+This avoids conflicts and errors.
